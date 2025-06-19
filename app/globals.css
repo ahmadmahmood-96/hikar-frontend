@@ -1,42 +1,147 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "~react-toastify/dist/ReactToastify.min.css";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
-}
+  .custom-list {
+    @apply list-none;
+    padding: 0;
+  }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  .custom-list li {
+    @apply pl-8 relative; /* Adjust padding based on the size of your icon */
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  .custom-list li::before {
+    content: "";
+    @apply absolute left-0 top-1/2 transform -translate-y-1/2;
+    width: 10px; /* Adjust based on the size of your icon */
+    height: 10px; /* Adjust based on the size of your icon */
+    background-image: url("../public/list-icon.png"); /* Path to your PNG */
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+  .custom-circle-list {
+    @apply list-none;
+    padding: 0;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  .custom-circle-list li {
+    @apply pl-16 relative; /* Adjust padding based on the size of your icon */
+    margin-left: 4rem; /* Adjust the margin based on your preference */
+  }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  .custom-circle-list li::before {
+    content: "";
+    @apply absolute left-0 top-1/2 transform -translate-y-1/2;
+    width: 40px; /* Adjust based on the size of your icon */
+    height: 40px; /* Adjust based on the size of your icon */
+    background-image: url("../public/circle-list-icon.png"); /* Path to your PNG */
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 2rem; /* Adjust the margin between icon and text */
+  }
+
+  .triangle {
+    @apply absolute;
+    border-top: 12px solid green;
+    z-index: 1;
+    width: 240px;
+    height: 40px;
+    background-color: white;
+    transform: translate(-10%, 84%) rotate(-14deg);
+  }
+
+  .triangle-1 {
+    @apply absolute;
+    border-top: 12px solid green;
+    z-index: 1;
+    width: 240px;
+    height: 40px;
+    background-color: white;
+    transform: translate(85%, 78%) rotate(14deg);
+  }
+
+  @media (min-width: 300px) and (max-width: 768px) {
+    .triangle {
+      width: 200px;
+      transform: translate(-11%, 79%) rotate(-14deg);
+    }
+    .triangle-1 {
+      width: 175px;
+    }
+  }
+
+  @media (width: 768px) {
+    .triangle {
+      width: 240px;
+      transform: translate(-4%, 79%) rotate(-14deg);
+    }
+    .triangle-1 {
+      width: 220px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .triangle-1 {
+      transform: translate(75%, 78%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    .triangle {
+      width: 180px;
+    }
+    .triangle-1 {
+      width: 200px;
+      transform: translate(58%, 87%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1200px) and (max-width: 1276px) {
+    .triangle {
+      width: 210px;
+    }
+    .triangle-1 {
+      transform: translate(73%, 112%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1276px) and (max-width: 1327px) {
+    .triangle {
+      width: 220px;
+    }
+    .triangle-1 {
+      transform: translate(73%, 102%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1327px) and (max-width: 1365px) {
+    .triangle-1 {
+      transform: translate(85%, 113%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1365px) {
+    .triangle-1 {
+      transform: translate(85%, 109%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1382px) {
+    .triangle-1 {
+      transform: translate(85%, 101%) rotate(14deg);
+    }
+  }
+
+  @media (min-width: 1419px) {
+    .triangle-1 {
+      transform: translate(85%, 75%) rotate(14deg);
+    }
   }
 }
