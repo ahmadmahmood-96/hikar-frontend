@@ -9,15 +9,15 @@ const links: Link[] = [
     href: "/",
   },
   {
-    name: "Projects",
-    href: "/projects",
+    name: "Cars",
+    href: "/Cars",
   },
-  { name: "Services", href: "/services" },
+  { name: "Parts", href: "/parts" },
   {
-    name: "Contact",
+    name: "Contact Us",
     href: "/contact",
   },
-  { name: "About", href: "/about" },
+  { name: "About Us", href: "/about" },
 ];
 
 export default links;
