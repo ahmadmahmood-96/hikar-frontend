@@ -1,27 +1,49 @@
-import { Square } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import footerLinks from "@/app/links";
 
 export default function Footer() {
   return (
-    <>
-      <footer>
-        <div className="w-full bg-primary sticky bottom-0 text-primaryText p-2">
-          <div className="flex flex-col lg:flex-row justify-around items-center">
-            <span className="text-sm text-center justify-center items-center flex lg:flex-row flex-col lg:text-lg md:text-base my-2">
-              Copyright ©2024 All rights reserved
-              <Link href="/">
-                <span className="text-xl lg:ml-4 mt-4 lg:mt-0 text-primaryText font-bold flex items-baseline">
-                  Ahmad{" "}
-                  <Square fill="teal" color="teal" size={10} className="ml-1" />
-                </span>
-              </Link>
-            </span>
-            <span className="text-sm text-center lg:text-lg md:text-base my-2">
-              Terms & Conditions . Privacy Notice
-            </span>
-          </div>
+    <footer className="w-full bg-gradient-to-r from-[#096AD8] via-[#34749b] to-[#4194b4] text-white py-10 px-6">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-10">
+        {/* Logo Section */}
+        <div className="flex flex-col items-start">
+          <Link href="/">
+            <Image
+              src="/hikar-bg-logo.png"
+              alt="Hikar Logo"
+              width={160}
+              height={50}
+              className="object-contain mb-4 rounded-lg"
+            />
+          </Link>
+          <span className="text-sm text-white">
+            &copy; 2024 Hikar Trading Co. All rights reserved.
+          </span>
         </div>
-      </footer>
-    </>
+
+        {/* Navigation Links */}
+        <div className="flex flex-col">
+          <span className="text-lg font-semibold text-white mb-3">Quick Links</span>
+          {footerLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm text-white hover:text-[#EAF3FF] mb-2 transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Policies */}
+        <div className="flex flex-col">
+          <span className="text-lg font-semibold text-white mb-3">Auction</span>
+          <Link href="#" className="text-sm text-white hover:text-[#EAF3FF] mb-2 transition-colors">
+            Take Part in Auction
+          </Link>
+        </div>
+      </div>
+    </footer>
   );
 }
