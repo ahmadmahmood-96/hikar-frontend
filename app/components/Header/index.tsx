@@ -18,16 +18,16 @@ export default function Header() {
   return (
     <>
       <header>
-        <nav className="flex justify-between items-center w-[94%] mx-auto my-1">
+        <nav className="flex justify-between items-center w-[94%] mx-auto my-2">
           <div className="logo flex items-center">
             <Link href="/" className="block">
               <Image
                 src="/hikar-logo.png"
                 alt="Hikar Logo"
-                width={140}
+                width={120}
                 height={50}
                 priority
-                className="w-auto h-20 object-contain"
+                className="w-auto h-14 object-contain"
               />
             </Link>
           </div>
