@@ -9,6 +9,7 @@ import { Tooltip } from "antd";
 import { toggleTheme } from "@/redux/features/theme-slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
+import Image from "next/image";
 
 export default function Header() {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,33 +18,34 @@ export default function Header() {
   return (
     <>
       <header>
-        <nav className="flex justify-between items-center w-[94%] mx-auto my-5">
-          <div>
-            <Link href="/">
-              <span
-                className={`text-3xl ${
-                  theme ? "text-primary" : "text-white"
-                } font-bold flex items-baseline`}
-              >
-                Ahmad{" "}
-                <Square fill="teal" color="teal" size={10} className="ml-1" />
-              </span>
+        <nav className="flex justify-between items-center w-[94%] mx-auto my-1">
+          <div className="logo flex items-center">
+            <Link href="/" className="block">
+              <Image
+                src="/hikar-logo.png"
+                alt="Hikar Logo"
+                width={140}
+                height={50}
+                priority
+                className="w-auto h-20 object-contain"
+              />
             </Link>
           </div>
+
           <div className="hidden lg:min-h-fit lg:flex items-center px-5">
             <ul className="flex md:flex-row md:items-center gap-2">
               {links.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className={`text-secondaryText mx-4 hover:text-teal
-                      ${
-                        currentLocation.startsWith(link.href) &&
-                        (currentLocation[link.href.length] === "/" ||
-                          currentLocation.length === link.href.length) &&
-                        "border-b-[3px] border-teal"
-                      }
-                    `}
+                    className={` mx-4 hover:text-teal text-[18px] font-medium
+                    ${
+                      currentLocation.startsWith(link.href) &&
+                      (currentLocation[link.href.length] === "/" ||
+                        currentLocation.length === link.href.length) &&
+                      "border-b-[3px] border-teal"
+                    }
+                  `}
                   >
                     {link.name}
                   </Link>
