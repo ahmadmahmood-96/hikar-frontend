@@ -10,7 +10,7 @@ const links: Link[] = [
   },
   {
     name: "Cars",
-    href: "/Cars",
+    href: "/cars",
   },
   { name: "Parts", href: "/parts" },
   {
