@@ -8,15 +8,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-10">
         {/* Logo Section */}
         <div className="flex flex-col items-start">
-          <Link href="/">
-            <Image
-              src="/hikar-bg-logo.png"
-              alt="Hikar Logo"
-              width={160}
-              height={50}
-              className="object-contain mb-4 rounded-lg"
-            />
-          </Link>
+          <div className="bg-white/40 backdrop-blur-md p-2 rounded-xl border border-white/20 mb-4">
+            <Link href="/">
+              <Image
+                src="/hikar-logo.png"
+                alt="Hikar Logo"
+                width={160}
+                height={50}
+                className="object-contain"
+              />
+            </Link>
+          </div>
+
           <span className="text-sm text-white">
             &copy; 2024 Hikar Trading Co. All rights reserved.
           </span>
@@ -24,7 +27,9 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <div className="flex flex-col">
-          <span className="text-lg font-semibold text-white mb-3">Quick Links</span>
+          <span className="text-lg font-semibold text-white mb-3">
+            Quick Links
+          </span>
           {footerLinks.map((link) => (
             <Link
               key={link.name}
@@ -39,7 +44,10 @@ export default function Footer() {
         {/* Policies */}
         <div className="flex flex-col">
           <span className="text-lg font-semibold text-white mb-3">Auction</span>
-          <Link href="#" className="text-sm text-white hover:text-[#EAF3FF] mb-2 transition-colors">
+          <Link
+            href="#"
+            className="text-sm text-white hover:text-[#EAF3FF] mb-2 transition-colors"
+          >
             Take Part in Auction
           </Link>
         </div>

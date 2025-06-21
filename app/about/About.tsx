@@ -1,139 +1,91 @@
 "use client";
 
-import Image from "next/image";
-import AboutBanner1 from "@/public/about1-banner.png";
-import DisplayPicture2 from "@/public/display-picture-2.jpg";
-import { Download } from "lucide-react";
-import { message } from "antd";
+import { useEffect } from "react";
 import { useAppSelector } from "@/redux/store";
-import Link from "next/link";
 
-export default function About() {
+export default function AboutPage() {
   const theme = useAppSelector((state) => state.themeReducer.value.lightMode);
 
+  useEffect(() => {
+    const elements = document.querySelectorAll(".fade-in");
+    elements.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.remove("opacity-0", "translate-y-4");
+        el.classList.add("opacity-100", "translate-y-0");
+      }, 150 * i);
+    });
+  }, []);
+
   return (
-    <>
-      <main className="relative grid h-[calc(60vh-8rem)] min-h-[400px] w-full place-items-center object-cover">
-        <Image
-          src={AboutBanner1}
-          alt="About Banner"
-          className="absolute left-0 top-0 z-[2] h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[#05122380] z-[2] opacity-95"></div>
-        <div className="z-[3] flex items-center text-center text-primaryText">
-          <h1 className="text-4xl lg:text-6xl font-bold">ABOUT ME</h1>
-        </div>
-        <span className="font-semibold absolute z-[3] text-xl text-primaryText lg:left-0 xl:left-0 xl:ml-8 2xl:left-0 2xl:ml-8 lg:ml-8 bottom-5">
-          Home {">"} About Me
-        </span>
-      </main>
-      <section className="">
-        <div className="flex flex-col lg:flex-row justify-center items-center lg:px-16 px-10 gap-y-5 gap-x-9 my-10">
-          <div className="flex flex-col justify-center items-center lg:items-start lg:w-[700px]">
-            <h2
-              className={`font-bold text-4xl mb-4 text-center ${
-                theme ? "text-primary" : "text-white"
-              } lg:text-left`}
-            >
-              <p className="my-1">About</p>
-              <p>
-                <span className="text-teal">My Career and Experience</span>
-              </p>
-            </h2>
-            <span
-              className={`${
-                theme ? "text-[#656262]" : "text-[##948e8e]"
-              } md:text-md lg:text-left text-center`}
-            >
-              Me, Ahmad Mahmood a recent graduate from Comsats University
-              Islamabad, Islamabad Campus in July 2024. Finished my
-              Bachelor&apos;s of Software Engineering with a CGPA of 3.36. My
-              major courses which I studied were; Web Development using MERN
-              Stack, Mobile Application Development using React Native, Software
-              Quality Engineering and Software Testing in which I practiced
-              working with JIRA, Cypress, Selenium and did both automation and
-              manual testing, Topics in Software Engineering Part 1 in which I
-              studied React JS. Then in Topics in Software Engineering Part 2 in
-              which I worked with Git, AWS in which I learnt working with EC2
-              machines, S3 Buckets, Jenkins, Docker and Kubernetes. I have
-              expertise in working with Front end technologies such as Next.Js,
-              React.Js, React Native, Tailwind CSS, Ant Design, Daisy UI. I have
-              also experience in working with MongoDB, MySQL, Python for web
-              scraping, AI/ML Development, and Data Science
-              <br />
-              <br />
-              <ul className="list-disc list-inside">
-                <li>
-                  Right now I am working as a Front End Web Intern at{" "}
-                  <Link href="https://codora.io/" className="font-semibold">
-                    Codora Pvt Ltd (Islamabad, Pakistan)
-                  </Link>{" "}
-                </li>
-                <li>
-                  {" "}
-                  I have worked at{" "}
-                  <Link
-                    href="https://decimalsolution.com/"
-                    className="font-semibold"
-                  >
-                    Decimal Solution (Islamabad, Pakistan)
-                  </Link>{" "}
-                  as Front End Web Intern (June 2024 - August 2024) where I
-                  worked on three different projects which included developing
-                  user side services providing website and performing its SEO
-                  for better ranking of the website.
-                </li>
-                <li>
-                  {" "}
-                  I have worked at Central Asian Cellular Forum now known as{" "}
-                  <Link
-                    href="https://www.smartforum.org/"
-                    className="font-semibold"
-                  >
-                    Smart Forum (Islamabad, Pakistan)
-                  </Link>{" "}
-                  as Front End Web Intern (July 2023 - August 2023) where I
-                  worked on company&apos;s portfolio website.
-                </li>
-              </ul>
-            </span>
-          </div>
-          <div className="my-5 ">
-            <Image
-              src={DisplayPicture2}
-              alt="Display Picture 2"
-              className="object-cover rounded-full w-96 h-96"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="flex justify-center items-center my-10">
-        <div
-          className={`flex flex-col items-center ${
-            theme ? "shadow-t-lg" : "shadow-custom-white"
-          } rounded-lg p-6 w-[250px] sm:w-[400px] md:w-[600px] lg:w-[700px]`}
-        >
-          <h2 className="text-2xl font-bold mb-4 text-center">
-            Download My CV
-          </h2>
+    <div
+      className={`min-h-screen px-6 py-12 transition-colors duration-500 ${
+        theme
+          ? "bg-gradient-to-br from-[#f6faff] via-[#e6f1f9] to-[#f6faff] text-gray-800"
+          : "bg-gradient-to-br from-[#0d1b2a] via-[#1b263b] to-[#0d1b2a] text-white"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#096AD8] relative inline-block pb-2">
+            About Us
+            <span className="block h-1 w-24 bg-[#096AD8] absolute -bottom-1 left-1/2 transform -translate-x-1/2 animate-pulse" />
+          </h1>
           <p
-            className={`text-center ${
-              theme ? "text-[#656262]" : "text-[##948e8e]"
-            } mb-6`}
+            className={`text-lg mt-4 fade-in opacity-0 translate-y-4 transition duration-700 ease-out ${
+              theme ? "text-gray-600" : "text-gray-300"
+            }`}
           >
-            Get a detailed look at my career journey, skills, and projects.
+            Driving Global Trust — Powered by Passion for Cars
           </p>
-          <a
-            className="bg-teal hover:bg-[#0e6d63] text-white font-semibold py-3 px-6 rounded inline-flex items-center transition-colors duration-300"
-            onClick={() => message.success("CV Downloaded Successfully 🎉")}
-            href="/Ahmad's Resume.pdf"
-            download="Ahmad's Resume.pdf"
-          >
-            <Download className="mr-2" />
-            Download CV
-          </a>
         </div>
-      </section>
-    </>
+
+        {/* Main content */}
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div className="fade-in opacity-0 translate-y-4 transition duration-700 ease-out">
+            <p className="text-lg mb-6">
+              <strong>Hikar Trading Company Ltd.</strong> is a global car and
+              parts trading enterprise based in Japan. We specialize in sourcing
+              and exporting vehicles of all types — from sleek sedans and rugged
+              SUVs to performance cars and commercial fleets — as well as
+              genuine car parts.
+            </p>
+            <p className="text-lg mb-6">
+              Our core mission is to deliver high-quality, affordable vehicles
+              to clients worldwide with transparency and care. Whether you’re an
+              individual or a dealership, Hikar makes auto trading seamless.
+            </p>
+            <p className="text-lg">
+              We’re deeply integrated into Japan’s leading auctions and supply
+              chains, ensuring competitive pricing and trusted logistics — every
+              step of the way.
+            </p>
+          </div>
+
+          {/* Info Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 fade-in opacity-0 translate-y-4 transition duration-700 ease-out">
+            {[
+              { label: "Years of Experience", value: "10+" },
+              { label: "Vehicles Exported", value: "1000+" },
+              { label: "Support Worldwide", value: "24/7" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`text-center rounded-xl p-6 transform transition hover:scale-105 ${
+                  theme
+                    ? "bg-white text-gray-800 shadow-md"
+                    : "bg-[#1e2a3a] text-white border border-white/10 shadow-md"
+                }`}
+              >
+                <h2 className="text-3xl font-bold text-[#096AD8]">
+                  {item.value}
+                </h2>
+                <p className="text-sm mt-2">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

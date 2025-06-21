@@ -27,7 +27,7 @@ export default function Header() {
                 width={120}
                 height={50}
                 priority
-                className="w-auto h-14 object-contain"
+                className="w-auto h-16 object-contain"
               />
             </Link>
           </div>
@@ -38,7 +38,7 @@ export default function Header() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className={` mx-4 hover:text-teal text-[18px] font-medium
+                    className={` mx-4 hover:text-teal text-[18px]
                     ${
                       currentLocation.startsWith(link.href) &&
                       (currentLocation[link.href.length] === "/" ||
@@ -55,7 +55,7 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-4">
             {theme ? (
-              <Tooltip title="Switch to Dark Mode">
+              <Tooltip title="Switch to Dark Mode" placement="bottomLeft">
                 <Moon
                   onClick={() => dispatch(toggleTheme())}
                   className="cursor-pointer"
